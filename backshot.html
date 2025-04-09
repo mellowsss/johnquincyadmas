@@ -2,29 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ell Button Example</title>
+  <title>Fancy Ell Button</title>
   <style>
+    /* Overall page style */
     html, body {
       height: 100%;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f0f0f0;
     }
+    /* Container styling */
     #container {
       text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
+    /* Button styling */
     button {
       font-size: 48px;
-      padding: 20px 40px;
+      padding: 20px 50px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #ffecd2, #fcb69f);
+      box-shadow: 4px 4px 8px #c8b1a1, -4px -4px 8px #fff;
       cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 6px 6px 12px #c8b1a1, -6px -6px 12px #fff;
+    }
+    /* Message styling with fade-in effect */
     #message {
       margin-top: 30px;
       font-size: 24px;
-      color: #333;
+      color: #555;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+    #message.visible {
+      opacity: 1;
     }
   </style>
 </head>
@@ -35,8 +57,22 @@
   </div>
 
   <script>
+    // Function to run two confirmation dialogs in sequence
+    function doubleConfirm() {
+      // First confirmation dialog
+      let firstConfirm = confirm("Are you sure?");
+      if (!firstConfirm) return false;
+      // Second confirmation dialog if first is confirmed
+      let secondConfirm = confirm("Are you really sure?");
+      return secondConfirm;
+    }
+
     document.getElementById('ellButton').addEventListener('click', function() {
-      document.getElementById('message').textContent = "he got backshots now";
+      if (doubleConfirm()) {
+        const messageDiv = document.getElementById('message');
+        messageDiv.textContent = "he got backshots now";
+        messageDiv.classList.add('visible'); // start fade in
+      }
     });
   </script>
 </body>
