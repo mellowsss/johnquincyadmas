@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ell Button Example</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    #container {
+      text-align: center;
+    }
+    button {
+      font-size: 48px;
+      padding: 20px 40px;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <button id="ellButton">ell</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    document.getElementById('ellButton').addEventListener('click', function() {
+      document.getElementById('message').textContent = "he got backshots now";
+    });
+  </script>
+</body>
+</html>
